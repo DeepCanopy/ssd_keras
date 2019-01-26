@@ -147,17 +147,17 @@ model.compile(optimizer=sgd, loss=ssd_loss.compute_loss)
 # In[ ]:
 
 
-# TODO: Set the path to the `.h5` file of the model to be loaded.
-model_path = 'path/to/trained/model.h5'
+# # TODO: Set the path to the `.h5` file of the model to be loaded.
+# model_path = 'path/to/trained/model.h5'
 
-# We need to create an SSDLoss object in order to pass that to the model loader.
-ssd_loss = SSDLoss(neg_pos_ratio=3, alpha=1.0)
+# # We need to create an SSDLoss object in order to pass that to the model loader.
+# ssd_loss = SSDLoss(neg_pos_ratio=3, alpha=1.0)
 
-K.clear_session() # Clear previous models from memory.
+# K.clear_session() # Clear previous models from memory.
 
-model = load_model(model_path, custom_objects={'AnchorBoxes': AnchorBoxes,
-                                               'L2Normalization': L2Normalization,
-                                               'compute_loss': ssd_loss.compute_loss})
+# model = load_model(model_path, custom_objects={'AnchorBoxes': AnchorBoxes,
+#                                                'L2Normalization': L2Normalization,
+#                                                'compute_loss': ssd_loss.compute_loss})
 
 
 # ## 3. Set up the data generators for the training
