@@ -47,10 +47,10 @@ print(Y_train.shape)
 	
 model = Sequential()
  
-model.add(Convolution2D(32, 3, 3, activation='relu', input_shape=(1,28,28)))
+model.add(Conv2D(32, (3, 3), activation="relu", input_shape=(1, 28, 28)))
 print(model.output_shape)
 # (None, 32, 26, 26)
-model.add(Convolution2D(32, 3, 3, activation='relu'))
+model.add(Conv2D(32, (3, 3), activation="relu")
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.25))
  
