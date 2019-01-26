@@ -1,0 +1,216 @@
+Every 2.0s: nvidia-smi                                                                                              Sat Jan 26 00:00:11 2019
+
+Sat Jan 26 00:00:11 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 980 Ti  Off  | 00000000:01:00.0 Off |                  N/A |
+| 17%   66C    P2    65W / 250W |   5782MiB /  6082MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce GTX 108...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 32%   57C    P2    61W / 250W |  10753MiB / 11178MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0     11003      C   python                                      5771MiB |
+|    1     11003      C   python                                     10743MiB |
++-----------------------------------------------------------------------------+
+
+
+
+
+
+
+
+Every 2.0s: nvidia-smi                                                                                              Sat Jan 26 00:00:42 2019
+
+Sat Jan 26 00:00:43 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 980 Ti  Off  | 00000000:01:00.0 Off |                  N/A |
+|  9%   63C    P0    65W / 250W |      0MiB /  6082MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce GTX 108...  Off  | 00000000:02:00.0 Off |                  N/A |
+|  0%   50C    P0    57W / 250W |      0MiB / 11178MiB |      1%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+
+
+
+
+
+hobs@gpu:~/code/ssd_keras$ python ssd300_training.py 
+/opt/anaconda/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Processing image set 'trainval.txt': 100%|█████████████████████████████████████████████████████████████| 5011/5011 [00:12<00:00, 400.81it/s]
+Processing image set 'test.txt': 100%|█████████████████████████████████████████████████████████████████| 4952/4952 [00:11<00:00, 423.43it/s]
+Creating HDF5 dataset: 100%|███████████████████████████████████████████████████████████████████████████| 5011/5011 [00:27<00:00, 182.52it/s]
+Creating HDF5 dataset: 100%|███████████████████████████████████████████████████████████████████████████| 4952/4952 [00:31<00:00, 157.48it/s]
+Number of images in the training dataset:         5011
+Number of images in the validation dataset:       4952
+Epoch 1/120
+2019-01-25 23:56:25.665244: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-01-25 23:56:36.950514: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1405] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-01-25 23:56:39.560591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1405] Found device 1 with properties: 
+name: GeForce GTX 980 Ti major: 5 minor: 2 memoryClockRate(GHz): 1.19
+pciBusID: 0000:01:00.0
+totalMemory: 5.94GiB freeMemory: 5.83GiB
+2019-01-25 23:56:39.886256: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1484] Adding visible gpu devices: 0, 1
+2019-01-25 23:56:50.546886: I tensorflow/core/common_runtime/gpu/gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-01-25 23:56:50.546947: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971]      0 1 
+2019-01-25 23:56:50.546959: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] 0:   N N 
+2019-01-25 23:56:50.546967: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] 1:   N N 
+2019-01-25 23:56:50.556897: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1097] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10405 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2019-01-25 23:56:50.675513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1097] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 5607 MB memory) -> physical GPU (device: 1, name: GeForce GTX 980 Ti, pci bus id: 0000:01:00.0, compute capability: 5.2)
+
+Epoch 00001: LearningRateScheduler setting learning rate to 0.001.
+   4/1000 [..............................] - ETA: 2:46:13 - loss: nan             Batch 3: Invalid loss, terminating training
+Traceback (most recent call last):
+  File "ssd300_training.py", line 402, in <module>
+    initial_epoch=initial_epoch)
+  File "/opt/anaconda/lib/python3.6/site-packages/keras/legacy/interfaces.py", line 91, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda/lib/python3.6/site-packages/keras/engine/training.py", line 1418, in fit_generator
+    initial_epoch=initial_epoch)
+  File "/opt/anaconda/lib/python3.6/site-packages/keras/engine/training_generator.py", line 251, in fit_generator
+    callbacks.on_epoch_end(epoch, epoch_logs)
+  File "/opt/anaconda/lib/python3.6/site-packages/keras/callbacks.py", line 79, in on_epoch_end
+    callback.on_epoch_end(epoch, logs)
+  File "/opt/anaconda/lib/python3.6/site-packages/keras/callbacks.py", line 429, in on_epoch_end
+    filepath = self.filepath.format(epoch=epoch + 1, **logs)
+KeyError: 'val_loss'
+terminate called without an active exception
+^C^C^C
+^C^C^C^CAborted (core dumped)
+
+
+In [2]: os.environ['CUDA_VISIBLE_DEVICES']                                                                                                                                                                                                                                                             [15/166]
+Out[2]: '1'
+
+In [3]: %run ssd300_training.py
+/opt/anaconda/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Processing image set 'trainval.txt': 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5011/5011 [00:12<00:00, 406.68it/s]
+Processing image set 'test.txt': 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4952/4952 [00:11<00:00, 431.37it/s]
+Creating HDF5 dataset: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5011/5011 [00:26<00:00, 185.85it/s]
+Creating HDF5 dataset: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4952/4952 [00:26<00:00, 187.56it/s]
+Number of images in the training dataset:         5011
+Number of images in the validation dataset:       4952
+Epoch 1/120
+2019-01-26 00:19:20.400249: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-01-26 00:19:21.682179: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1405] Found device 0 with properties: 
+name: GeForce GTX 980 Ti major: 5 minor: 2 memoryClockRate(GHz): 1.19
+pciBusID: 0000:01:00.0
+totalMemory: 5.94GiB freeMemory: 5.83GiB
+2019-01-26 00:19:21.682234: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1484] Adding visible gpu devices: 0
+2019-01-26 00:19:23.275100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-01-26 00:19:23.275156: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971]      0 
+2019-01-26 00:19:23.275169: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] 0:   N 
+2019-01-26 00:19:23.275552: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1097] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 5607 MB memory) -> physical GPU (device: 0, name: GeForce GTX 980 Ti, pci bus id: 0000:01:00.0, compute capability: 5.2)
+
+Epoch 00001: LearningRateScheduler setting learning rate to 0.001.
+2019-01-26 00:19:30.398998: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.09GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:30.683838: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.09GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:31.565414: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.27GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:31.690321: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.87GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:31.836797: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.55GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:32.006952: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:32.052684: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.39GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:32.287705: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.44GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:32.334544: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.37GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2019-01-26 00:19:32.371261: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.08GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+   3/1000 [..............................] - ETA: 1:36:05 - loss: 127894.00252019-01-26 00:19:38.085680: E tensorflow/stream_executor/cuda/cuda_dnn.cc:81] 
+2019-01-26 00:19:38.085798: I tensorflow/stream_executor/stream.cc:4818] stream 0x562c254afd00 did not memzero GPU location; source: 0x7f210d372d40
+---------------------------------------------------------------------------
+InternalError                             Traceback (most recent call last)
+~/code/ssd_keras/ssd300_training.py in <module>()
+    400                               validation_data=val_generator,
+    401                               validation_steps=ceil(val_dataset_size/batch_size),
+--> 402                               initial_epoch=initial_epoch)
+    403 
+    404 
+
+/opt/anaconda/lib/python3.6/site-packages/keras/legacy/interfaces.py in wrapper(*args, **kwargs)
+     89                 warnings.warn('Update your `' + object_name + '` call to the ' +
+     90                               'Keras 2 API: ' + signature, stacklevel=2)
+---> 91             return func(*args, **kwargs)
+     92         wrapper._original_function = func
+     93         return wrapper
+
+/opt/anaconda/lib/python3.6/site-packages/keras/engine/training.py in fit_generator(self, generator, steps_per_epoch, epochs, verbose, callbacks, validation_data, validation_steps, class_weight, max_queue_size, workers, use_multiprocessing, shuffle, initial_epoch)
+   1416             use_multiprocessing=use_multiprocessing,
+   1417             shuffle=shuffle,
+-> 1418             initial_epoch=initial_epoch)
+   1419 
+   1420     @interfaces.legacy_generator_methods_support
+
+/opt/anaconda/lib/python3.6/site-packages/keras/engine/training_generator.py in fit_generator(model, generator, steps_per_epoch, epochs, verbose, callbacks, validation_data, validation_steps, class_weight, max_queue_size, workers, use_multiprocessing, shuffle, initial_epoch)
+    215                 outs = model.train_on_batch(x, y,
+    216                                             sample_weight=sample_weight,
+--> 217                                             class_weight=class_weight)
+    218 
+    219                 outs = to_list(outs)
+
+/opt/anaconda/lib/python3.6/site-packages/keras/engine/training.py in train_on_batch(self, x, y, sample_weight, class_weight)
+   1215             ins = x + y + sample_weights
+   1216         self._make_train_function()
+-> 1217         outputs = self.train_function(ins)
+   1218         return unpack_singleton(outputs)
+   1219 
+
+/opt/anaconda/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py in __call__(self, inputs)
+   2713                 return self._legacy_call(inputs)
+   2714 
+-> 2715             return self._call(inputs)
+   2716         else:
+   2717             if py_any(is_tensor(x) for x in inputs):
+
+/opt/anaconda/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py in _call(self, inputs)
+   2673             fetched = self._callable_fn(*array_vals, run_metadata=self.run_metadata)
+   2674         else:
+-> 2675             fetched = self._callable_fn(*array_vals)
+   2676         return fetched[:len(self.outputs)]
+   2677 
+
+/opt/anaconda/lib/python3.6/site-packages/tensorflow/python/client/session.py in __call__(self, *args, **kwargs)
+   1380           ret = tf_session.TF_SessionRunCallable(
+   1381               self._session._session, self._handle, args, status,
+-> 1382               run_metadata_ptr)
+   1383         if run_metadata:
+-> 1382               run_metadata_ptr)
+   1383         if run_metadata:
+   1384           proto_data = tf_session.TF_GetBuffer(run_metadata_ptr)
+
+/opt/anaconda/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py in __exit__(self, type_arg, value_arg, traceback_arg)
+    517             None, None,
+    518             compat.as_text(c_api.TF_Message(self.status.status)),
+--> 519             c_api.TF_GetCode(self.status.status))
+    520     # Delete the underlying status object from memory otherwise it stays alive
+    521     # as there is a reference to status from this from the traceback due to
+
+InternalError: cuDNN Backward Filter function launch failure : input shape([32,128,150,150]) filter shape([3,3,128,128])
+         [[Node: training/SGD/gradients/conv2_2/convolution_grad/Conv2DBackpropFilter = Conv2DBackpropFilter[T=DT_FLOAT, _class=["loc:@training/SGD/gradients/conv2_2/convolution_grad/Conv2DBackpropInput"], data_format="NCHW", dilations=[1, 1, 1, 1], padding="SAME", strides=[1, 1, 1, 1], use_cudnn_on_gp
+u=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](conv2_1/Relu, ConstantFolding/training/SGD/gradients/conv2_2/convolution_grad/ShapeN-matshapes-1, training/SGD/gradients/conv2_2/Relu_grad/ReluGrad)]]
+
+In [4]: The X11 connection broke (error 1). Did the X11 server die?

@@ -52,6 +52,18 @@ from data_generator.object_detection_2d_misc_utils import apply_inverse_transfor
 
 # In[2]:
 
+import os
+import tensorflow as tf
+import keras.backend.tensorflow_backend as ktf
+
+print('CUDA_VISIBLE_GPUDEVICES={}'.format(os.environ['CUDA_VISIBLE_GPUDEVICES']))
+
+def get_session(gpu_fraction=0.7):
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_fraction,
+                                allow_growth=True)
+    return tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+ktf.set_session(get_session())
+
 
 img_height = 300 # Height of the model input images
 img_width = 300 # Width of the model input images
