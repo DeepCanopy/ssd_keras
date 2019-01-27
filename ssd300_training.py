@@ -203,8 +203,8 @@ val_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path=Non
 # 2: Parse the image and label lists for the training and validation datasets. This can take a while.
 
 # TODO: Set the paths to the datasets here.
-VOC_2007_DIR = os.path.join('/', 'midata', 'VOC2007' 'VOCdevkit', 'VOC2007')
-VOC_2012_DIR = os.path.join('/', 'midata', 'VOC2012' 'VOCdevkit', 'VOC2012')
+VOC_2007_DIR = os.path.join('/', 'midata', 'VOC2007', 'VOCdevkit', 'VOC2007')
+VOC_2012_DIR = os.path.join('/', 'midata', 'VOC2012', 'VOCdevkit', 'VOC2012')
 # The directories that contain the images.
 VOC_2007_images_dir      = os.path.join(VOC_2007_DIR, 'JPEGImages')
 VOC_2012_images_dir      = os.path.join(VOC_2012_DIR, 'JPEGImages')
