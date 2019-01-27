@@ -56,9 +56,10 @@ import os
 import tensorflow as tf
 import keras.backend.tensorflow_backend as ktf
 
+os.environ['CUDA_VISIBLE_GPUDEVICES'] = '1'
 print('CUDA_VISIBLE_GPUDEVICES={}'.format(os.environ.get('CUDA_VISIBLE_GPUDEVICES', None)))
 
-def get_session(gpu_fraction=0.7):
+def get_session(gpu_fraction=.5):
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_fraction,
                                 allow_growth=True)
     return tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
