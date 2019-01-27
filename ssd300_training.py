@@ -203,24 +203,33 @@ val_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path=Non
 # 2: Parse the image and label lists for the training and validation datasets. This can take a while.
 
 # TODO: Set the paths to the datasets here.
-
-VOC_2007_DIR = '/midata/VOC2007/VOCdevkit/VOC2007'
+VOC_2007_DIR = os.path.join('/', 'midata', 'VOC2007' 'VOCdevkit', 'VOC2007')
+VOC_2012_DIR = os.path.join('/', 'midata', 'VOC2012' 'VOCdevkit', 'VOC2012')
 # The directories that contain the images.
-VOC_2007_images_dir      = VOC_2007_DIR + '/JPEGImages/'
-# VOC_2012_images_dir      = '../../datasets/VOCdevkit/VOC2012/JPEGImages/'
+VOC_2007_images_dir      = os.path.join(VOC_2007_DIR, 'JPEGImages')
+VOC_2012_images_dir      = os.path.join(VOC_2012_DIR, 'JPEGImages')
 
 # The directories that contain the annotations.
-VOC_2007_annotations_dir      = VOC_2007_DIR + '/Annotations/'
-# VOC_2012_annotations_dir      = '../../datasets/VOCdevkit/VOC2012/Annotations/'
+VOC_2007_annotations_dir      = os.path.join(VOC_2007_DIR, 'Annotations')
+VOC_2012_annotations_dir      = os.path.join(VOC_2012_DIR, 'Annotations')
 
 # The paths to the image sets.
-VOC_2007_train_image_set_filename    = VOC_2007_DIR + '/ImageSets/Main/train.txt'
-# VOC_2012_train_image_set_filename    = '../../datasets/VOCdevkit/VOC2012/ImageSets/Main/train.txt'
-VOC_2007_val_image_set_filename      = VOC_2007_DIR + '/ImageSets/Main/val.txt'
-# VOC_2012_val_image_set_filename      = '../../datasets/VOCdevkit/VOC2012/ImageSets/Main/val.txt'
-VOC_2007_trainval_image_set_filename = VOC_2007_DIR + '/ImageSets/Main/trainval.txt'
-# VOC_2012_trainval_image_set_filename = '../../datasets/VOCdevkit/VOC2012/ImageSets/Main/trainval.txt'
-VOC_2007_test_image_set_filename     = VOC_2007_DIR + '/ImageSets/Main/test.txt'
+for splitname in 'train val trainval test'.split():
+    for yr in ['07', '12']:
+        vocname = 'VOC_20' + yr
+        varname = '_'.join([vocname, splitname, 'image_set_filename'])
+        print(varname)
+        locals()[varname] = os.path.join(locals()[vocname + '_DIR'], 'ImageSets', 'Main', splitname + '.txt')
+        print(locals()[varname])
+
+VOC_2007_train_image_set_filename    = os.path.join(VOC_2007_DIR, 'ImageSets', 'Main', 'train.txt')
+VOC_2012_train_image_set_filename    = os.path.join(VOC_2012_DIR, 'ImageSets', 'Main', 'train.txt')
+VOC_2007_val_image_set_filename      = os.path.join(VOC_2007_DIR, 'ImageSets', 'Main', 'val.txt')
+VOC_2012_val_image_set_filename      = os.path.join(VOC_2012_DIR, 'ImageSets', 'Main', 'val.txt')
+VOC_2007_trainval_image_set_filename = os.path.join(VOC_2007_DIR, 'ImageSets', 'Main', 'trainval.txt')
+VOC_2012_trainval_image_set_filename = os.path.join(VOC_2012_DIR, 'ImageSets', 'Main', 'trainval.txt')
+VOC_2007_test_image_set_filename     = os.path.join(VOC_2007_DIR, 'ImageSets', 'Main', 'test.txt')
+VOC_2012_test_image_set_filename     = os.path.join(VOC_2012_DIR, 'ImageSets', 'Main', 'test.txt')
 
 # The XML parser needs to now what object class names to look for and in which order to map them to integers.
 classes = ['background',
@@ -230,8 +239,8 @@ classes = ['background',
            'horse', 'motorbike', 'person', 'pottedplant',
            'sheep', 'sofa', 'train', 'tvmonitor']
 
-train_dataset.parse_xml(images_dirs=[VOC_2007_images_dir,],
-                                     # VOC_2012_images_dir],
+train_dataset.parse_xml(images_dirs=[VOC_2007_images_dir,
+                                     VOC_2012_images_dir],
                         image_set_filenames=[VOC_2007_trainval_image_set_filename,],
                                              # VOC_2012_trainval_image_set_filename],
                         annotations_dirs=[VOC_2007_annotations_dir,],
